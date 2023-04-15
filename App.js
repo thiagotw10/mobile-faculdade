@@ -1,12 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Alert } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import Lista from './src/telas/Lista';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
+
+  function rodar(){
+    Alert.alert('ola')
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+    <Stack.Navigator styles={styles.container} initialRouteName="Lista" >
+      <Stack.Screen options={{headerShown: false}} name="Lista" component={Lista} />
+    </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
